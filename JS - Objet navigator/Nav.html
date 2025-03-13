@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function testerNavigateur() {
+            let caracteristiqueNavigateur = "";
+            caracteristiqueNavigateur = "Code du navigateur : " + navigator.appCodeName + "<br>";
+            caracteristiqueNavigateur += "Nom du navigateur : " + navigator.appName + "<br>";
+            caracteristiqueNavigateur += "Version : " + navigator.appVersion + "<br>";
+            caracteristiqueNavigateur += "Support des cookies : " + navigator.cookieEnabled + "<br>";
+            caracteristiqueNavigateur += "Systeme d'exploitation : " + navigator.platform + "<br>";
+            caracteristiqueNavigateur += "User-agent header : " + navigator.userAgent + "<br>";
+            caracteristiqueNavigateur += "User-agent language : " + navigator.systemLanguage + "<br>";
+            document.getElementById("affichageInfosNavigateur").innerHTML = caracteristiqueNavigateur;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input 
+        type="button"
+        value="Caractéristique du navigateur"
+        onclick="testerNavigateur()"
+        >
+    </div>
+    <br><br>
+    <div id="affichageInfosNavigateur"></div>
+</body>
+</html>
