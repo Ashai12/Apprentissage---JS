@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function longueurSaisie(champ, messageAlerte) {
+            var longueurMinimale = 5;
+            var longueurMaximale = 10;
+            if (champ.value.length >= longueurMinimale && champ.value.length <= longueurMaximale) {
+                alert(`Vous avez saisi : ${champ.value}`);
+                return true;
+            } 
+            else
+            {
+                alert(messageAlerte);
+                champ.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Champ (entre 5 et 10 caractères impérativement) :
+        <input
+            type="text"
+            id="saisie"
+        />
+        <input
+            type="button"
+            onclick="longueurSaisie(document.getElementById('saisie'),'Saisisez entre 5 et 10 caractères SVP')"
+            value="Validation saisie"
+        />
+    </form>
+</body>
+</html>

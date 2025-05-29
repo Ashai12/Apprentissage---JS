@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function estAlphabetique(champ, messageAlerte) {
+            var valeursAcceptees = /^[a-zA-ZéèêëáàâäíìîïóòôöúùûüñçÇ \-]+$/; // lettres du début à la fin (accents et noms composés inclus)
+            if (champ.value.match(valeursAcceptees)) {
+                alert(`Vous avez saisi : ${document.getElementById('texte').value}`);
+                return true;
+            } 
+            else
+            {
+                alert(messageAlerte);
+                champ.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Saisisez des lettres SVP :
+        <input
+            type="text"
+            id="texte"
+        />
+        <input
+            type="button"
+            onclick="estAlphabetique(document.getElementById('texte'),'Saisisez des lettres SVP')"
+            value="Validation saisie"
+        />
+    </form>
+</body>
+</html>

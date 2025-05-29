@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function estUnEmail(email, messageAlerte) {
+            var valeursAcceptees = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; // email
+            if (email.value.match(valeursAcceptees)) {
+                alert(`Structure d'adresse e-mail correcte : ${email.value}`);
+                return true;
+            } 
+            else
+            {
+                alert(messageAlerte);
+                email.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Email :
+        <input
+            type="text"
+            id="saisie"
+        />
+        <input
+            type="button"
+            onclick="estUnEmail(document.getElementById('saisie'),`Structure d'email incorrecte`)"
+            value="Validation saisie"
+        />
+    </form>
+</body>
+</html>

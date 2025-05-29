@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function estNumerique(champ, messageAlerte) {
+            var valeursAcceptees = /^[0-9]+$/; // nombre entier du début à la fin
+            if (champ.value.match(valeursAcceptees)) {
+                alert(`Vous avez saisi : ${document.getElementById('nombre').value}`);
+                return true;
+            } 
+            else
+            {
+                alert(messageAlerte);
+                champ.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Montant (saisie d'un nombre entier SVP) :
+        <input
+            type="text"
+            id="nombre"
+        />
+        <input
+            type="button"
+            onclick="estNumerique(document.getElementById('nombre'),'Saisisez un nombre entier SVP')"
+            value="Validation saisie"
+        />
+    </form>
+</body>
+</html>
