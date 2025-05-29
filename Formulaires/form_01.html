@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function nonVide(champ, messageAlerte) {
+            if (champ.value.length == 0) {
+                alert(messageAlerte);
+                champ.focus();
+                return false;
+            }
+            alert(`Fomrulaire bien envoyé : ${document.getElementById("nom").value}`);
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="nom">
+        <input type="button" onclick="nonVide(document.getElementById('nom'),'saisie obligatoire')" value="Validation saisie">
+    </form>
+</body>
+</html>
