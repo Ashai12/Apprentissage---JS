@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    function controllerChoixListe(liste)
+    {
+        let optionsListe = document.forms.formulaire.liste.options;
+        for (i = 0; i < optionsListe.length; i++) {
+            if (optionsListe[i].selected) 
+            {
+                alert(`Sport selectionné : ${optionsListe[i].text}`);
+            }
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <form name="formulaire">
+        Sport pratiqué : 
+        <select id="liste" size="7" multiple>
+            <optgroup label="Sports collectifs">
+                <option value="football" selected>Football</option>
+                <option value="volley">Volley Ball</option>
+            </optgroup>
+            <optgroup label="Sports individuels">
+                <option value="golf">Golf</option>
+                <option value="natation" selected>Natation</option>
+                <option value="tennis">Tennis</option>
+            </optgroup>
+        </select>
+        <input 
+        type="button" 
+        onclick="controllerChoixListe(document.getElementById('liste'))"
+        value="Validation saisie">
+    </form>
+</body>
+</html>
