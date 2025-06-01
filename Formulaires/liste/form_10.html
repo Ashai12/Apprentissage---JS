@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function selectionSports(messageAlerte) {
+            var tabSports = document.forms.liste_sports.elements["sports[]"];
+            var nombreSports = tabSports.length;
+            var i = 0;
+            var nombreSportsSelectionnes = 0;
+
+            while (i < nombreSports) {
+                if (tabSports[i].checked) {
+                    nombreSportsSelectionnes = nombreSportsSelectionnes + 1;
+                    alert(`Votre sport favori est : ${tabSports[i].value}`);
+                }
+                i = i + 1;
+            }
+            if (nombreSportsSelectionnes == 0) {
+                    alert(messageAlerte);
+                    return false;
+                } else {
+                    return true;
+                }
+        }
+    </script>
+</head>
+<body>
+    <form name="liste_sports">
+        Sport préféré : <br>
+        <input type="checkbox" name="sports[]" value="golf">Golf</input><br>
+        <input type="checkbox" name="sports[]" value="football">Football</input><br>
+        <input type="checkbox" name="sports[]" value="natation">Natation</input><br>
+        <input type="checkbox" name="sports[]" value="tennis">Tennis</input><br>
+        <input 
+        type="button"
+        onclick="selectionSports('Veuillez sélectionner vos sports préférés')"
+        value="Validation saisie">
+    </form>
+</body>
+</html>
