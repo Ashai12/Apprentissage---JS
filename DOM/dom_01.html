@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    var compteur = 1; 
+
+    function ajoutezDiv() {
+      compteur++;
+      var container = document.getElementById('container');
+      var nouvelleDiv = document.createElement('div');
+      var texteDiv = document.createTextNode(`div n°${compteur}`)
+      nouvelleDiv.appendChild(texteDiv);
+      container.appendChild(nouvelleDiv);
+    }
+    </script>
+</head>
+<body>
+    <div id="container"> div n°1 </div>
+    <button onclick="ajoutezDiv()">Ajoutez une div</button>
+</body>
+</html>
