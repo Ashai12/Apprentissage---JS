@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Moteur de recherche <a href="https://www.google.fr/">Google</a> <br>
+    Site d'informations <a href="https://fr.yahoo.com/" id="yahoo">Yahoo</a> <br>
+    Encyclopédie <a href="https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal">Wikipedia</a>
+</body>
+<script>
+        document.write("<br/><br/>");
+
+        document.write(`Nombre de lien(s) 'hypertexte' du document : ${document.links.length} <br/>`);
+
+        document.write(`Identifiant du 2ème lien 'hypertexte' du document : ${document.links[1].id} <br/>`);
+
+        document.write(`URL du 3ème lien 'hypertexte' du document : ${document.links[2].href}`);
+    </script>
+</html>
