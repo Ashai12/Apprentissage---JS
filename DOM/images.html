@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/astronaut-7846067_1280.jpg" alt="astronaut" id="van_van_1" width="150" height="100" >
+    <br><br>
+    <img src="../images/building-9568428_1280.webp" alt="metro" id="van_van_2" width="150" height="100" border="1">
+    <br><br>
+    <img src="../images/istockphoto-2111967560-1024x1024.jpg" alt="giraphe" id="van_van_3" width="150" height="100">
+    <br><br>
+    <img src="../images/vintage-car-7300881_1280.jpg" alt="Voiture" id="van_van_4" width="150" height="100">
+
+    <script>
+        document.write("<br/><br/>"); 
+
+        document.write(`Nombre d'image(s) du document : ${document.images.length} <br/>`);
+
+        document.write(`Identifiant de la 1ère image : ${document.images[0].id} <br/>`);
+        
+        document.write(`Attribut border de la 2ème image : ${document.images[1].border} <br/>`);
+
+        document.write(`Attribut src de la 3ème image : ${document.images[2].src} <br/>`);
+
+        document.write(`Attribut width de la 4ème : ${document.images[3].width} <br/>`);
+
+        document.write(`Attribut height de la 4ème image : ${document.images[3].height}`);
+    </script>
+</body>
+</html>
