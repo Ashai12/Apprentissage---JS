@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <b>Formulaire n°1</b>
+    <form name="form1" id="idForm1" method="post">
+        Champ 1 : <input type="text" id="champ1" size="20"><br>
+        Champ 2 : <input type="text" id="champ2" size="20"><br>
+    </form>
+    <br>
+    <b>Formulaire n°2</b>
+    <form name="form2" id="idForm2">
+        Champ 3 : <input input type="text" id="champ3" size="20"><br>
+        Champ 4 : <input input type="text" id="champ4" size="20"><br>
+    </form>
+    <br>
+    <b>Formulaire n°3</b>
+    <form name="form3" id="idForm3">
+        Champ5 : <input input type="text" id="champ5" size="20"><br>
+        Champ6 : <input input type="text" id="champ6" size="20"><br>
+    </form>
+    <br><br>
+
+    <script>
+        document.write(`Nombre de formulaire(s) du document : ${document.forms.length} <br />`);
+
+        document.write(`Nom du premier formulaire : ${document.forms[0].name} <br />`);
+
+        document.write(`Identifiant du 2ème formulaire : ${document.forms[1].id} <br />`)
+
+    </script>
+</body>
+</html>
