@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a name="html">Cours n°1 (HTML)</a><br>
+    <a name="css">Cours n°2 (CSS)</a><br>
+    <a name="xml">Cours n°3 (XML)</a><br>
+
+    Accès à un <a href="https://www.google.fr/">complément de cours</a> (cf. moteur de recherche google)
+
+    
+</body>
+<script>
+        document.write("<br /><br />");
+
+        document.write(`Nombre d'ancre(s) du document : ${document.anchors.length} <br />`);
+
+        document.write(`1ère ancre du document : ${document.anchors[0].text} <br />`);
+
+        document.write(`2ème ancre du document : ${document.anchors[1].name}`)
+    </script>
+</html>
