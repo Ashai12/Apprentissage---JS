@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function historyBack()
+        {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <script>
+        document.write(`URL de la page donnant accès au document : ${document.referrer} <br />`);
+
+        var param = window.location.search;
+
+        document.write(`Paramètre (avant recodage) : ${param} <br />`);
+
+        param = unescape(param); // remplacement du code hexadecimale par le caractère qu'il represente (%20 -> espace)
+
+        document.write(`Paramètre (après recodage) : ${param} <br />`);
+
+        param = param.substring(param.lastIndexOf("=")+1); //suppression du texte avant la case n°7
+
+        document.write(`Valeur du paramètre : ${param}`);
+    </script>
+
+    <br><br>
+    <form>
+        <input type="button" id="boutonHystoryBack" value="Retour à la page précédente" onclick="historyBack()">
+    </form>
+</body>
+</html>
