@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function desactiverBouton() {
+            document.getElementById("monBouton").disabled=true;
+        }
+
+        function afficherNomBouton(nomBouton) {
+            alert(`L'intitulé du bouton sélectionné est ${nomBouton}`);
+        }
+
+        function afficherIdentifiantBouton(idBouton) {
+            alert(`Le bouton sélectionné a pour identifiant ${idBouton}`);
+        }
+
+        function afficherIdentifiantElement(idElement) {
+            alert(`Le lien sélectionné a pour identifiant ${idElement}`);
+        }
+    </script>
+</head>
+<body>
+    <form name="formulaire1">
+        Un clic sur le bouton de confirmation va le désactiver <br><br>
+        <input 
+        type="button"
+        id="monBouton"
+        value="OK"
+        onclick="desactiverBouton();"
+        >
+    </form>
+    <br><hr><br>
+    <form name="formulaire2">
+        Un clic sur l'un des boutons en affichera le nom (intitulé) <br><br>
+        <input 
+        type="button"
+        id="monBouton1"
+        value="Bouton1"
+        onclick="afficherNomBouton(this.value);"
+        ><br>
+        <input 
+        type="button"
+        id="monBouton2"
+        value="Bouton2"
+        onclick="afficherNomBouton(this.value);"
+        >
+    </form>
+    <br><hr><br>
+    Un clic sur l'un des boutons ou le lien hypertexte en affichera l'identifiant <br><br>
+    <form name="formulaire3">
+        <input 
+        type="button"
+        id="monBouton3"
+        value="Bouton3"
+        onclick="afficherIdentifiantBouton(this.id);"
+        ><br>
+        <input 
+        type="button"
+        id="monBouton4"
+        value="Bouton4"
+        onclick="afficherIdentifiantBouton(this.id);"
+        ><br>
+        <a 
+        href="#"
+        id="monLien"
+        onclick="afficherIdentifiantElement(this.id);">Lien hypertexte</a>
+    </form>
+</body>
+</html>

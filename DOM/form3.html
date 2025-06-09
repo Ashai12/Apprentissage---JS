@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function afficherProprietesBouton(nomBouton, idBouton) {
+    const bouton = document.getElementById(idBouton);
+    const nomFormulaire = bouton.form.name;
+    alert(`L'intitulé du bouton sélectionné est ${nomBouton} et ce bouton appartient au formulaire ${nomFormulaire}`);
+}
+    </script>
+</head>
+<body>
+    Formulaire n°1 : <br>
+    <form name="formulaire1">
+        <input 
+        type="button"
+        id="monBouton1"
+        value="Bouton1"
+        onclick="afficherProprietesBouton(this.value, this.id);"
+        ><br>
+        <input 
+        type="button"
+        id="monBouton2"
+        value="Bouton2"
+        onclick="afficherProprietesBouton(this.value, this.id);"
+        ><br>
+        <input 
+        type="button"
+        id="monBouton3"
+        value="Bouton3"
+        onclick="afficherProprietesBouton(this.value, this.id);"
+        >
+    </form>
+    <br><hr><br>
+    Formulaire n°2 : <br>
+    <form name="formulaire2">
+        <input 
+        type="button"
+        id="monBouton4"
+        value="Bouton4"
+        onclick="afficherProprietesBouton(this.value, this.id);"
+        ><br>
+        <input 
+        type="button"
+        id="monBouton5"
+        value="Bouton5"
+        onclick="afficherProprietesBouton(this.value, this.id);"
+        >
+    </form>
+
+    <script>
+        var listeInput = document.getElementsByTagName('input');
+        var nombreInput = listeInput.length;
+        document.write("<br><hr><br>");
+        document.write(`Nombre de balise input dans l'ensemble des formulaires ${nombreInput} <br />`);
+
+        var liste2Input = document.forms[1].getElementsByTagName('input');
+        var nombre2Input = liste2Input.length;
+        document.write(`Nombre de balise input dans le 2ème formulaire : ${nombre2Input}`);
+    </script>
+</body>
+</html>
