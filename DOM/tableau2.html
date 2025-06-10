@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function placerTraitAuDessus() {
+            document.getElementById('monTableau').frame="above";
+        }
+
+        function placerTraitEnDessous() {
+            document.getElementById('monTableau').frame="below";
+        }
+    </script>
+</head>
+<body>
+    <table id="monTableau">
+        <tr>
+            <td>Modèle</td>
+            <td>Puissance</td>
+        </tr>
+        <tr>
+            <td>Ferrari 512 BB</td>
+            <td>380</td>
+        </tr>
+        <tr>
+            <td>Lamborghini Miura</td>
+            <td>385</td>
+        </tr>
+        <tr>
+            <td>Porsche 964 3.6</td>
+            <td>360</td>
+        </tr>
+    </table>
+    <br><br>
+    <form>
+        Ajout/Suppression des traits de délimitation du tableau <br><br>
+        <input 
+        type="button"
+        id="boutonTraitAuDessus" 
+        value="Trait au-dessus du tableau"
+        onclick="placerTraitAuDessus();"
+        >
+        <br>
+        <input 
+        type="button"
+        id="boutonTraitEnDessous" 
+        value="Trait en-dessous du tableau"
+        onclick="placerTraitEnDessous();"
+        >
+        <br>
+    </form>
+</body>
+</html>
