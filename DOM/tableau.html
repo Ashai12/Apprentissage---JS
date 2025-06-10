@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function modifierBorder() {
+            if (document.getElementById('monTableau').border == "1") {
+                document.getElementById('monTableau').border = "5";
+            }
+            else {
+                document.getElementById('monTableau').border = "1"
+            }
+        }
+
+        function modifierCellspacing() {
+            if (document.getElementById((monTableau).cellSpacing == "1")) {
+                document.getElementById((monTableau).cellSpacing = "10")
+            }
+            else {
+                document.getElementById((monTableau).cellSpacing = "1")
+            }
+        } 
+
+        function modifierCellpadding() {
+            if (document.getElementById((monTableau).cellPadding == "1")) {
+                document.getElementById((monTableau).cellPadding = "40")
+            }
+            else {
+                document.getElementById((monTableau).cellPadding = "1")
+            }
+        }
+
+        function ajouterCaption() {
+            var monTitre = document.getElementById('monTableau').createCaption();
+            monTitre.innerHTML = "Voiture de sport";
+        }
+    </script>
+</head>
+<body>
+    <table id="monTableau" border="1" cellspacing="1" cellpadding="1">
+        <tr>
+            <td>Modèle</td>
+            <td>Puissance</td>
+        </tr>
+        <tr>
+            <td>Ferrari 512 BB</td>
+            <td>380</td>
+        </tr>
+        <tr>
+            <td>Lamborghini Miura</td>
+            <td>385</td>
+        </tr>
+        <tr>
+            <td>Porsche 964 3.6</td>
+            <td>360</td>
+        </tr>
+    </table>
+    <br><br>
+    <form>
+        Modification des valeurs d'attributs du tableau <br><br>
+        <input 
+        type="button" 
+        id="boutonBorder"
+        value="Modification attribut border"
+        onclick="modifierBorder();"
+        > <br>
+        <input 
+        type="button" 
+        id="boutonCellspacing"
+        value="Modification attribut cellspacing"
+        onclick="modifierCellspacing();"
+        > <br>
+        <input 
+        type="button" 
+        id="boutonCellpadding"
+        value="Modification attribut cellpadding"
+        onclick="modifierCellpadding();"
+        > <br>
+        <input 
+        type="button" 
+        id="boutonCaption"
+        value="Modification du titre du tableau"
+        onclick="ajouterCaption();"
+        >
+    </form>
+</body>
+</html>
