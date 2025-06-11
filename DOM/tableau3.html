@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function afficherCellule() {
+            var numeroLigne = parseInt(document.getElementById('numLigne1').value);
+            alert(`N° de ligne : ${numeroLigne}`);
+
+            var numeroColonne = parseInt(document.getElementById('numColonne1').value);
+            alert(`N° de colonne : ${numeroColonne}`);
+
+            var nombreLignes = parseInt(document.getElementById('monTableau').rows.length);
+            alert(`Nombre de ligne(s) du tableau : ${nombreLignes}`);
+
+            var nombreColonnes = parseInt(document.getElementById('monTableau').rows[0].cells.length);
+            alert(`Nombre de colonne(s) du tableau : ${nombreColonnes}`);
+
+            if ((numeroLigne >= 0) && (numeroLigne <= (nombreLignes - 1)) && (numeroLigne >= 0) && (numeroColonne <= (nombreColonnes - 1))) {
+                alert(`Code HTML de la ligne : ${document.getElementById('monTableau').rows[numeroLigne].innerHTML}`);
+
+                var tabLigne = document.getElementById('monTableau').rows[numeroLigne].cells;
+                alert(`Contenu de la cellule : ${tabLigne[numeroColonne].innerHTML}`);
+            } else {
+                alert("Votre numéro de ligne ou votre numéro de colonne est erroné");
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+    <table id="monTableau" border="1">
+        <tr>
+            <td>Modèle</td>
+            <td>Puissance</td>
+        </tr>
+        <tr>
+            <td>Ferrari 512 BB</td>
+            <td>380</td>
+        </tr>
+        <tr>
+            <td>Lamborghini Miura</td>
+            <td>385</td>
+        </tr>
+        <tr>
+            <td>Porsche 964 3.6</td>
+            <td>360</td>
+        </tr>
+    </table>
+    <br><hr><br>
+    <form name="affichage">
+        Affichage d'une cellule du tableau <br><br>
+        N° de ligne (entre 0 et 3) :
+        <input 
+        type="text"
+        id="numLigne1"
+        value=""
+        ><br>
+        N° de colonne (entre 0 et 1) :
+        <input 
+        type="text"
+        id="numColonne1"
+        value=""
+        ><br>
+        <input 
+        type="button"
+        id="boutonAfficherCellule"
+        value="Affichage d'une cellule"
+        onclick="afficherCellule()"
+        ><br>
+    </form>
+</body>
+</html>
