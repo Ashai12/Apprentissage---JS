@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ajouterLigneDebutTableau() {
+            var tabLigne = document.getElementById('monTableau').insertRow(1);
+            var colonne0 = tabLigne.insertCell(0);
+            colonne0.innerHTML = "Ferrari F40";
+
+            var colonne1 = tabLigne.insertCell(1);
+            colonne1.innerHTML = "478";
+        }
+
+        function ajouterLigneFinTableau() {
+            var nombreLignes = parseInt(document.getElementById('monTableau').rows.length);
+            var tabLigne = document.getElementById('monTableau').insertRow(nombreLignes);
+            var colonne0 = tabLigne.insertCell(0);
+            colonne0.innerHTML = "Porsche 959";
+
+            var colonne1 = tabLigne.insertCell(1);
+            colonne1.innerHTML = "450";
+        }
+
+        function supprimerLigneTableau() {
+            var numeroLigne = parseInt(document.getElementById('numLigne').value);
+            var nombreLignes = parseInt(document.getElementById('monTableau').rows.length);
+
+            if ((numeroLigne >= 1) && (numeroLigne < nombreLignes)) {
+                document.getElementById('monTableau').deleteRow(numeroLigne);
+            } else {
+                alert("N° de ligne erroné");
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="monTableau" border="1">
+        <tr>
+            <td>Modèle</td>
+            <td>Puissance</td>
+        </tr>
+        <tr>
+            <td>Ferrari 512 BB</td>
+            <td>380</td>
+        </tr>
+        <tr>
+            <td>Lamborghini Miura</td>
+            <td>385</td>
+        </tr>
+        <tr>
+            <td>Porsche 964 3.6</td>
+            <td>360</td>
+        </tr>
+    </table>
+    <br><hr><br>
+    Ajout de lignes <br><br>
+    <form name="formulaireAjout">
+        <input 
+        type="button"
+        id="boutonAjouterLigneDebutTableau"
+        value="Ajout d'une ligne (debut du tableau)"
+        onclick="ajouterLigneDebutTableau();"
+        ><br><br>
+        <input 
+        type="button"
+        id="boutonAjouterLigneFinTableau"
+        value="Ajout d'une ligne (fin du tableau)"
+        onclick="ajouterLigneFinTableau();"
+        ><br>
+    </form>
+    <br><hr><br>
+    Suppression de lignes <br><br>
+    <form name="formulaireSuppression">
+        N° de ligne à supprimer (n° à partir de 1) :
+        <input 
+        type="text"
+        id="numLigne"
+        value=""
+        ><br><br>
+        <input 
+        type="button" 
+        id="boutonSupprimerLigneTableau"
+        value="Suppression d'une ligne"
+        onclick="supprimerLigneTableau()"
+        >
+    </form>
+</body>
+</html>
