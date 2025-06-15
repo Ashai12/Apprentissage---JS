@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function colorerTitreTableau() {
+            var nombreColonnes = parseInt(document.getElementById('monTableau').rows[0].cells.length);
+            alert(`Nombres de colonne(s) du tableau : ${nombreColonnes}`);
+
+            var tabLigne = document.getElementById('monTableau').rows[0].cells;
+            for (let numeroColonne = 0; numeroColonne < nombreColonnes; numeroColonne++) {
+                tabLigne[numeroColonne].bgColor = "#FFA500";             
+            }
+        }
+
+        function colorerLignesTableau() {
+            var nombreLignes = parseInt(document.getElementById('monTableau').rows.length);
+            alert(`Nombre de ligne(s) du tableau : ${nombreLignes}`);
+
+            var nombreColonnes = parseInt(document.getElementById('monTableau').rows[0].cells.length);
+            alert(`Nombres de colonne(s) du tableau : ${nombreColonnes}`);
+
+            for (let index = 1; index < nombreLignes; index++) {
+                var tabLigne = document.getElementById('monTableau').rows[index].cells;
+                for (let numeroColonne = 0; numeroColonne < nombreColonnes; numeroColonne++) {
+                if (index%2 == 0) {
+                    tabLigne[numeroColonne].bgColor = "silver";
+                } else {
+                    tabLigne[numeroColonne].bgColor = "grey";
+                }            
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="monTableau" border="1">
+        <tr>
+            <td>Modèle</td>
+            <td>Puissance</td>
+        </tr>
+        <tr>
+            <td>Ferrari 512 BB</td>
+            <td>380</td>
+        </tr>
+        <tr>
+            <td>Lamborghini Miura</td>
+            <td>385</td>
+        </tr>
+        <tr>
+            <td>Porsche 964 3.6</td>
+            <td>360</td>
+        </tr>
+    </table>
+    <br><br>
+        <form>
+            Coloration du titre (orange) et des lignes 
+            (alternativement argent/gris) du tableau <br><br>
+            <input 
+            type="button"
+            id="boutonColorerTitreTableau"
+            value="Coloration du titre"
+            onclick="colorerTitreTableau()"
+            ><br>
+            <input 
+            type="button" 
+            id="boutonColorerLignesTableau"
+            value="Coloration des lignes"
+            onclick="colorerLignesTableau()"
+            >
+        </form>
+</body>
+</html>
