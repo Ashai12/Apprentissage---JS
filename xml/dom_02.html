@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        var marque = xmlDoc.getElementsByTagName("marque");
+
+        document.write(`Marque voiture n°1 : ${marque[0].childNodes[0].nodeValue} <br />`);
+
+        document.write(`Marque voiture n°2 : ${marque[1].childNodes[0].nodeValue} <br />`);
+
+        document.write(`Marque voiture n°3 : ${marque[2].childNodes[0].nodeValue} <br />`);
+    </script>
+</body>
+</html>
