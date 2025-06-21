@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        document.write("Liste des noeuds rattachés à la racine : <br/>");
+
+        var listeNoeudsRacine = xmlDoc.documentElement.childNodes; 
+
+        for (let index = 0; index < listeNoeudsRacine.length; index++) {
+            if (listeNoeudsRacine[index].nodeType == 1) /*Element node*/ {
+                document.write(` - ${listeNoeudsRacine[index].nodeName} <br/>`);
+            }
+        }
+        document.write("<br/>");
+        document.write(`Le noeud racine est ${xmlDoc.documentElement.nodeName} <br/>`);
+        document.write(`Le type du noeud racine est ${xmlDoc.documentElement.nodeType}`);
+    </script>
+</body>
+</html>
