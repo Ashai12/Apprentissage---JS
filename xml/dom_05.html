@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        document.write(`Liste des champs (noeuds) de chaque voiture : <br/>`);
+        var listeChampsVoiture = xmlDoc.getElementsByTagName('voiture')[0].childNodes;
+
+        var champVoiture = xmlDoc.getElementsByTagName('voiture')[0].firstChild;
+
+        for (let index = 0; index < listeChampsVoiture.length; index++) {
+            if (champVoiture.nodeType == 1) {
+                document.write(` - ${champVoiture.nodeName} <br/>`);
+            }
+            champVoiture = champVoiture.nextSibling;
+        }
+
+        document.write('<br/>');
+        document.write(`Liste des site Web décrivant la 2ème voiture : <br/>`);
+
+        listeChampsVoiture2 = xmlDoc.getElementsByTagName("voiture")[1].childNodes;
+        champVoiture2 = xmlDoc.getElementsByTagName("voiture")[1].firstChild;
+
+        for (let index = 0; index < listeChampsVoiture2.length; index++) {
+            if (champVoiture2.nodeType == 1 && champVoiture2.nodeName == "site_web") {
+                document.write(` - ${champVoiture2.nodeName} : ${champVoiture2.childNodes[0].nodeValue} <br/>`);
+            }
+            champVoiture2 = champVoiture2.nextSibling;
+        }
+    </script>
+</body>
+</html>
