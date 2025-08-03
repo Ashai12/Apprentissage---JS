@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        var marqueVoiture = xmlDoc.getElementsByTagName("marque")[0].childNodes[0];
+        
+        marqueVoiture.nodeValue = "Ferrari Italia";
+
+        marqueVoiture = xmlDoc.getElementsByTagName("marque")[0].childNodes[0];
+        var texteMarqueVoiture = marqueVoiture.nodeValue;
+        document.write(`La marque de la 1ère voiture est désormais : ${texteMarqueVoiture}`);
+    </script>
+</body>
+</html>
