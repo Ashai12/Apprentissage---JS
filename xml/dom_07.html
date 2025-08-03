@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        var premiereVoiture = xmlDoc.getElementsByTagName("voiture")[0].attributes;
+
+        document.write(`Origine de la 1ère voiture : ${premiereVoiture.getNamedItem("origine").nodeValue}<br>`);
+
+        var troisiemeVoiture = xmlDoc.getElementsByTagName("voiture")[2].attributes;
+
+        document.write(`Origine de la 3ème voiture : ${troisiemeVoiture.getNamedItem("origine").nodeValue}<br>`);
+
+        document.write(`Groupe de la 3ème voiture : ${troisiemeVoiture.getNamedItem("groupe").nodeValue}`);
+    </script>
+</body>
+</html>
