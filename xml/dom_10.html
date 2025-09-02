@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        var voiture = xmlDoc.getElementsByTagName("voiture");
+        for (let index = 0; index < voiture.length; index++) {
+            voiture[index].setAttribute("origine", "EUROPE");
+            document.write(`Provenance du consstructeur de la voiture n° ${index+1} : ${voiture[index].getAttribute("origine")} <br />`);
+        }
+
+    </script>
+</body>
+</html>
