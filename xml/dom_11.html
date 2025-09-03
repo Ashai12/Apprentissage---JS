@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "voitures.xml", false);
+        xmlhttp.send();
+
+        var xmlDoc = xmlhttp.responseXML;
+
+        document.write("<table border='1'>");
+        document.write("<tr>");
+        document.write("<td>");
+        document.write("Marque");
+        document.write("</td>"); 
+        document.write("<td>");
+        document.write("Modèle");
+        document.write("</td>");
+        document.write("</tr>");
+        
+        var voiture = xmlDoc.getElementsByTagName("voiture");
+        for (let index = 0; index < voiture.length; index++) {
+            document.write("<tr>");
+            document.write("<td>");
+            document.write(voiture[index].getElementsByTagName("marque")[0].childNodes[0].nodeValue); 
+            document.write("</td>");
+            document.write("<td>");
+            document.write(voiture[index].getElementsByTagName("modele")[0].childNodes[0].nodeValue);
+            document.write("</td>");
+            document.write("</tr>"); 
+        }
+        document.write("</table>")
+    </script>
+</body>
+</html>
