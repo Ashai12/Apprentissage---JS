@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chargerVoitures() {
+            if (window.XMLHttpRequest) {
+                var xmlhttp = new XMLHttpRequest();
+            } else {
+                var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET", "voitures.xml", false);
+            xmlhttp.send();
+
+            xmlDoc = xmlhttp.responseXML;
+        }
+
+        function afficherVoitures() {
+            document.write("<table border='1'>");
+            document.write("<tr>");
+            document.write("<td>");
+            document.write("Marque");
+            document.write("</td>");
+            document.write("<td>");
+            document.write("Modèle");
+            document.write("</td>");
+            document.write("</tr>");
+
+            voiture = xmlDoc.getElementsByTagName("voiture");
+            for (let index = 0; index < voiture.length; index++) {
+                document.write("<tr>");
+                document.write("<td>");
+                document.write(voiture[index].getElementsByTagName("marque")[0].childNodes[0].nodeValue);
+                document.write("</td>");
+                document.write("<td>");
+                document.write(voiture[index].getElementsByTagName("modele")[0].childNodes[0].nodeValue);
+                document.write("</td>");
+                document.write("</tr>");
+            }
+            document.write("</table>")
+        }
+
+        function effacerVoiture() {
+            alert(`Nombre de voitures avant suppression : ${xmlDoc.getElementsByTagName('voiture').length}`);
+            var voitureSupprimee = xmlDoc.getElementsByTagName("voiture")[0];
+            xmlDoc.documentElement.removeChild(voitureSupprimee);
+            alert(`Nombre de voiture(s) après suppression : ${xmlDoc.getElementsByTagName('voiture').length}`);
+            document.write("<br/><br/> Liste des voitures après suppression");
+            afficherVoitures();
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        chargerVoitures();
+        afficherVoitures();
+
+        var confirmationEffacementVoiture = confirm("Effacement de la première voiture ?");
+        if (confirmationEffacementVoiture == true) {
+            effacerVoiture();
+        }
+    </script>
+</body>
+
+</html>
