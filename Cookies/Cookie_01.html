@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function creationCookie(
+      function creationCookie(
         nomCookie,
         valeurCookie,
         expirationCookie,
-        cheminCookie, 
-        domaineCookie, 
-        securiteCookie) {
-            document.cookie = nomCookie + ' = ' + encodeURI(valeurCookie) + ' ' + ((expirationCookie == undefined) ? '' : (`; expires= ${expirationCookie.toGMTString()}`)) + ((cheminCookie == undefined) ? '' : (`; Path= ${cheminCookie}`)) + ((domaineCookie == undefined) ? '' : (`; domain= ${domaineCookie}`)) + ((securiteCookie == true) ? '; Secure' : '');
-        }
-        var dateExpiration = new Date();
-        dateExpiration.setTime(dateExpiration.getTime() + 300 * 1000);
-        creationCookie("monCookie", "C'est un cookie", dateExpiration, "/");
-        document.write("Le cookie a normalement été écrit dans le disque dur")
+        cheminCookie,
+        domaineCookie,
+        securiteCookie
+      ) {
+        document.cookie =
+          nomCookie +
+          " = " +
+          encodeURI(valeurCookie) +
+          " " +
+          (expirationCookie == undefined
+            ? ""
+            : `; expires= ${expirationCookie.toGMTString()}`) +
+          (cheminCookie == undefined ? "" : `; Path= ${cheminCookie}`) +
+          (domaineCookie == undefined ? "" : `; domain= ${domaineCookie}`) +
+          (securiteCookie == true ? "; Secure" : "");
+      }
+      var dateExpiration = new Date();
+      dateExpiration.setTime(dateExpiration.getTime() + 300 * 1000);
+      creationCookie("monCookie", "C'est un cookie", dateExpiration, "/");
+      document.write("Le cookie a normalement été écrit dans le disque dur");
     </script>
-</body>
+  </body>
 </html>
