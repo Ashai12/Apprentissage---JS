@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lectureCookie(nomCookie) {
+            if (document.cookie.length == 0) {
+                return null;
+            }
+            else {
+                var tabElement = document.cookie.split(";");
+                var positionEgal = tabElement[0].indexOf("=",0);
+                var nomElement = tabElement[0].substring(0, positionEgal );
+                var valeurElement = tabElement[0].substring(positionEgal+1);
+
+                if (nomElement == nomCookie) {
+                    return decodeURI(valeurElement);
+                }
+                return null;
+            }
+        }
+
+        if (lectureCookie("monCookie") == null) {
+            document.write(`Le cookie monCookie n'a pas été trouvé`)
+        } else {
+            document.write(`Le cookie monCookie a pour valeur : ${lectureCookie("monCookie")}`);
+        }
+    </script>
+</body>
+</html>
