@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function supressionCookie(
+        nomCookie,
+        valeurCookie,
+        expirationCookie,
+        cheminCookie,
+        domaineCookie,
+        securiteCookie
+      ) {
+        document.cookie =
+          nomCookie +
+          " = " +
+          encodeURI(valeurCookie) +
+          " " +
+          (expirationCookie == undefined
+            ? ""
+            : `; expires= ${expirationCookie.toGMTString()}`) +
+          (cheminCookie == undefined ? "" : `; Path= ${cheminCookie}`) +
+          (domaineCookie == undefined ? "" : `; domain= ${domaineCookie}`) +
+          (securiteCookie == true ? "; Secure" : "");
+      }
+      var dateExpiration = new Date();
+      dateExpiration.setTime(dateExpiration.getTime() - 1);
+      supressionCookie("monCookie", "", dateExpiration, "/");
+      document.write("Le cookie a normalement été supprimé du disque dur");
+    </script>
+</body>
+</html>
