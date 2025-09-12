@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var intitule;
+        var nomPersonne;
+        var prenomPersonne;
+        var mailPersonne;
+
+        function ecrireLocalStorage (){
+            if (typeof localStorage != "undefined") {
+                nomPersonne = "Jasaron";
+                localStorage.setItem("nomPersonne",nomPersonne);
+                prenomPersonne = "Ashaï";
+                localStorage.setItem("prenomPersonne",prenomPersonne);
+                mailPersonne = "ashaijasaron@gmail.com";
+                localStorage.setItem("mailPersonne",mailPersonne);
+                intitule = "Contenu du localStorage (après écriture)";
+                document.getElementById("intitule").innerHTML = intitule;
+                document.getElementById("nomPersonne").innerHTML = nomPersonne;
+                document.getElementById("prenomPersonne").innerHTML = prenomPersonne;
+                document.getElementById("mailPersonne").innerHTML = mailPersonne;
+
+
+            }
+            else {
+                alert("localStorage n'est pas supporté");
+            }
+        };
+
+        function lireLocalStorage() {
+            if (typeof localStorage != "undefined") {
+                nomPersonne = localStorage.getItem("nomPersonne");
+                prenomPersonne = localStorage.getItem("prenomPersonne");
+                mailPersonne = localStorage.getItem("mailPersonne");
+                intitule = "Contenu du localStorage (après relecture)";
+                document.getElementById("intitule").innerHTML = intitule;
+                document.getElementById("nomPersonne").innerHTML = nomPersonne;
+                document.getElementById("prenomPersonne").innerHTML = prenomPersonne;
+                document.getElementById("mailPersonne").innerHTML = mailPersonne;
+            }
+            else {
+                alert("localStorage n'est pas supporté");
+            }
+        }
+
+        function supprimerLocalStorage() {
+            if (typeof localStorage != "undefined") {
+                localStorage.removeItem("nomPersonne");
+                localStorage.removeItem("prenomPersonne");
+                localStorage.removeItem("mailPersonne");
+                intitule = "Contenu du localStorage (après suppression)";
+                document.getElementById("intitule").innerHTML = intitule;
+                document.getElementById("nomPersonne").innerHTML = "";
+                document.getElementById("prenomPersonne").innerHTML = "";
+                document.getElementById("mailPersonne").innerHTML = "";
+            }
+            else {
+                alert("localStorage n'est pas supporté");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="button" value="Ecriture dans localStorage" onclick="ecrireLocalStorage();">
+        <br>
+        <input type="button" value="Lecture depuis localStorage" onclick="lireLocalStorage();">
+        <br>
+        <input type="button" value="Suppression de l'entrée dans localStorage" onclick="supprimerLocalStorage();">
+    </form>
+    <br> 
+    <span id="intitule"></span> <br>
+    <span id="nomPersonne"></span> <br>
+    <span id="prenomPersonne"></span> <br>
+    <span id="mailPersonne"></span> <br>
+
+    <br><br><br>
+
+    <center>
+        <a href="JavaScript:window.location='view-source:' + window.location" > Code source</a>
+    </center>
+</body>
+</html>
