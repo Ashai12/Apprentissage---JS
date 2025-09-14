@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ecrireLocalStorage() {
+            if (typeof localStorage != "undefined" && JSON) {
+                var coorndoneesPersonne = {
+                    nom : document.getElementById("nom").value,
+                    prenom : document.getElementById("prenom").value,
+                    mail : document.getElementById("mail").value
+                };
+                localStorage.setItem("identite",JSON.stringify(coorndoneesPersonne));
+                alert("Enregistrement dans localStorage effectué");
+            }
+            else {
+                alert("localStorage n'est pas supporté");
+            }
+        }
+
+        function supprimerLocalStorage() {
+            if (typeof localStorage != "undefined" && JSON) {
+                localStorage.removeItem("identite");
+                document.getElementById("nom").value = "";
+                document.getElementById("prenom").value = "";
+                document.getElementById("mail").value = "";
+
+                alert("Suppression de l'entrée identité dans le localStorage effectuée");
+            } else {
+                alert("localStorage n'est pas supporté")
+            }
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Nom</td>
+            <td>
+                <input type="text" id="nom" size="40" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom</td>
+            <td>
+                <input type="text" id="prenom" size="40" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>Mail</td>
+            <td>
+                <input type="text" id="mail" size="40" value="">
+            </td>
+        </tr>
+    </table>
+
+    <br> 
+
+    <form>
+        <input type="button" value="Ecriture dans localStorage" onclick="ecrireLocalStorage();">
+        <br>
+        <input type="button" id="boutonLecture" value="Lecture depuis localStorage" >
+        <br>
+        <input type="button" value="Suppression de l'entrée dans localStorage" onclick="supprimerLocalStorage();">
+    </form>
+
+    <script>
+        document.getElementById("boutonLecture").onclick = function() {
+            if (typeof localStorage != "undefined" && JSON) {
+                var coorndoneesPersonne = JSON.parse(localStorage.getItem("identite"));
+                document.getElementById("nom").value = coorndoneesPersonne.nom;
+                document.getElementById("prenom").value = coorndoneesPersonne.prenom;
+                document.getElementById("mail").value = coorndoneesPersonne.mail;
+                alert("Lecture depuis localStorage effectuée");
+            } else {
+                alert("localStorage n'est pas supporté");
+                
+            }
+        }
+    </script>
+</body>
+</html>
