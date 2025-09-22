@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         var httpRequest; 
+         var valTimeout;
+
+        function timeout(ajaxOBJ) {
+            ajaxOBJ.abort(); // abort sert à annuler une requêtte http si elle est encore en cours
+        }
+
+        function appelerServeurDistant() {
+            var url = "http://christian.vigouroux.online.fr/js_nusoap/serveur_ws_01.php"; // URL du serveur SOAP où la requête sera envoyée
+            // message SOAP à transmettre au serveur
+            var messageSOAP = '<?xml version="1.0" encoding="ISO-8859-1"?>'; // ?
+            messageSOAP += '<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"'; // Début du message
+            messageSOAP += ' xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"';
+            messageSOAP += ' xmlns:xsd="http://www.w3.org/2001/XMLSchema"';
+            messageSOAP += ' xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"';
+            messageSOAP += ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+            messageSOAP += ' xmlns:si="http://soapinterop.org/xsd">';
+            messageSOAP += '<SOAP-ENV:Body>'; // Ouverture de la balise <SOAP-ENV:Body> (corps du message SOAP)
+            messageSOAP += '<nsl:listerVoitures xmlns:nsl="http://christian.vigouroux.online.fr"></nsl:listerVoitures>';
+            messageSOAP += '</SOAP-ENV:Body>'; // Ferme la balise SOAP-ENV:Body
+            messageSOAP += '</SOAP-ENV:Envelope>'; // Ferme la balise SOAP-ENV:Envelope (fin du message SOAP)
+
+            alert(`MessageSOAP : ${messageSOAP}`);
+
+            if (window.XMLHttpRequest) {
+            httpRequest = new XMLHttpRequest();
+        } else {
+            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        httpRequest.open("POST", url, true);
+
+        if (httpRequest.overrideMimeType)/* Teste si la méthode overrideMimeType existe (certains navigateurs) ; permet de forcer un type MIME pour la réponse */ {
+            httpRequest.overrideMimeType("text/xml"); // Si disponible, force le type MIME de la réponse à text/xml (xml)
+        }
+
+        /* 
+        Préparation de l'en-tête du message SOAP
+        (Content-type positionné à text/XML)
+        NB : cf. https://en.wikipedia.org/wiki/list_of_HTTP_header_fields
+        Pour les autres paramétres possibles
+        */
+
+        httpRequest.setRequestHeader("Content-Type", "text/xml"); // Définit l'en-tête HTTP Content-Type à text/xml pour indiquer que le corps de la requête est du XML (message SOAP)
+
+        httpRequest.send(messageSOAP); // Envoie réellement la requête HTTP en POST avec le contenu messageSOAP
+        valTimeout = setTimeout("timeout(httpRequest);",60000); // Envoi de la requête avec un timeout de 60 secondes, la requête sera en erreur une fois le délais atteint
+
+        httpRequest.onreadystatechange = parserDOM; // Assigne la fonction parserDOM comme gestionnaire de l'événement onreadystatechange. À chaque changement d'état de la requête, parserDOM sera appelée.
+        }
+
+        function parserDOM() {
+            try {
+                if (httpRequest.readyState == 4) /* test si requête terminée et résultat reçu */ {
+                    if (httpRequest.status == 200) /* test si requête HTTP a le status OK */ {
+                        clearTimeout(valTimeout); // Annule le timeout défini précédemment (la requête a réussi avant les 60 s)
+                        var text = httpRequest.responseText; // Récupère le texte de la réponse (chaîne) dans la variable locale text
+                        alert(`text : ${text}`);
+
+                        // Parser pour décoder le flux XML envoyé
+                        if (window.DOMParser) {
+                            // Parsage pour IE7 et plus, Firefox, Chrome, Opera, Safari
+                            parser = new DOMParser(); // Crée une instance de DOMParser
+                            xmlDoc = parser.parseFromString(text, 'text/xml') // Parse la chaîne text en un document XML (xmlDoc) via DOMParser.parseFromString
+                        } else {
+                            // Parsage pour IE6 et moins
+                            xmlDoc = new ActiveXObject("Microsoft.XMLDOM"); // Crée un objet XMLDOM via ActiveX pour parser le XML (IE ancien
+
+                            // La récupération du flux devra être complète avant le début du parsage
+
+                            xmlDoc.async = "false"; // Régle la propriété async de l'objet XML DOM sur "false" pour indiquer parsing synchrone (spécifique à l'API ActiveX)
+                            xmlDoc.loadXML(text) // Charge la chaîne text dans l'objet XML DOM (méthode spécifique IE ActiveX)
+
+                    }
+                    // Parsage
+
+                            var html = "";
+                            alert(`Nombre de champs intégrés dans le flux XML : ${xmlDoc.getElementsByTagName("item").length}`);
+
+                            for (let index = 0; index < xmlDoc.getElementsByTagName("item").length; index++) {
+                                if (index % 3 == 0) {
+                                    html += `<br /><br />Code : ${xmlDoc.getElementsByTagName("item")[index].childNodes[0].nodeValue}`; 
+                                }
+                                if (index % 3 == 1) {
+                                    html += `<br /><br />Libellé : ${xmlDoc.getElementsByTagName("item")[index].childNodes[0].nodeValue}`; 
+                                }
+                                if (index % 3 == 2) {
+                                    html += `<br /> Vitesse maximale : ${xmlDoc.getElementsByTagName("item")[index].childNodes[0].nodeValue}`; 
+                                }
+                            }
+                            var divisionResultat = document.getElementById("resultat");
+                            divisionResultat.innerHTML =  html;
+                        }
+                }
+            } catch (error) {
+                alert(`Description de l'erreur : ${error.message}`);
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <script>
+        appelerServeurDistant(); // Appelle immédiatement la fonction appelerServeurDistant() quand le script est exécuté (donc au chargement de la page) : envoie la requête SOAP automatiquement.
+    </script>
+    <div id="resultat"></div>
+</body>
+</html>
