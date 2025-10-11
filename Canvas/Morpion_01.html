@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- Largeur du canvas : 1000 -->
+     <!-- Hauteur du canvas : 800 -->
+     <canvas id="grilleMorpion" width="1000" height="800">
+        Attention votre navigateur ne supporte pas l'élément Canvas
+     </canvas>
+     
+     <script>
+        var emplacementCanvas = document.getElementById("grilleMorpion");
+
+        // Définition du contexte du canvas (2d) 
+        var contexteCanvas = emplacementCanvas.getContext("2d");
+
+        // Définition des propriétés des traits
+        contexteCanvas.strokeStyle = "black";
+        contexteCanvas.lineWidth = 1;
+
+        // Début du parcours en ligne brisée
+        contexteCanvas.beginPath();
+
+        // Point de départ du tracé (x, y)
+        contexteCanvas.moveTo(10, 10);
+
+        // Tracé du trait haut horizontal
+        contexteCanvas.lineTo(110, 10);
+
+        // Tracé du trait droit vertical
+        contexteCanvas.lineTo(110, 110);
+
+        // Tracé du trait bas horizontal
+        contexteCanvas.lineTo(10, 110);
+
+        // Tracé du trait gauche vertical 
+        contexteCanvas.lineTo(10, 10)
+
+        // Fin du parcours en ligne brisée (facultatif)
+        contexteCanvas.closePath();
+
+        // Texte effectif
+        contexteCanvas.stroke();
+     </script>
+</body>
+</html>
