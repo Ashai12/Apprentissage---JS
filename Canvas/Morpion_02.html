@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function tracerGrille(x, y, cote) {
+            // Tracé dans le canvas
+
+            // Définition des propriétés des traits
+            contexteCanvas.strokeStyle = "black";
+            contexteCanvas.lineWidth = 1;
+
+            // Définition des propriétés de la grille
+            var xDepart = x;
+            var yDepart = y;
+            var longueurCote = cote;
+
+            // Début du parcours en ligne brisée
+            contexteCanvas.beginPath();
+
+            // Point de départ du tracé (x, y)
+            contexteCanvas.moveTo(xDepart, yDepart);
+
+            // Tracé du trait haut horizontal
+            contexteCanvas.lineTo(xDepart + longueurCote, yDepart);
+
+            // Tracé du trait droit vertical
+            contexteCanvas.lineTo(xDepart + longueurCote, yDepart + longueurCote);
+
+            // Tracé du trait bas horizontal
+            contexteCanvas.lineTo(xDepart, yDepart + longueurCote);
+
+            // Tracé du trait gauche vercital
+            contexteCanvas.lineTo(xDepart, yDepart);
+
+            // Fin du parcours en ligne brisée (facultatif)
+            contexteCanvas.closePath();
+
+            // Texte effectif
+            contexteCanvas.stroke();
+        }
+    </script>
+</head>
+<body>
+     <!-- Largeur du canvas : 1000 -->
+     <!-- Hauteur du canvas : 800 -->
+     <canvas id="grilleMorpion" width="1000" height="800">
+        Attention votre navigateur ne supporte pas l'élément Canvas
+     </canvas>
+     
+     <script>
+        var emplacementCanvas = document.getElementById("grilleMorpion");
+
+        // Définition du contexte du canvas (2d) 
+        var contexteCanvas = emplacementCanvas.getContext("2d");
+
+        // Tracé de la grille
+        // La fonction tracerGrille possède 3 paramètres
+        // P1 : xDepart
+        // P2 : yDepart
+        // P3 : longueurCote
+        for (let ligne = 1; ligne <= 15; ligne++) {
+            for (let colonne = 1; colonne <= 15; colonne++) {
+                tracerGrille(colonne*100, ligne*100, 100)
+            }
+            
+        }
+     </script>
+</body>
+</html>
