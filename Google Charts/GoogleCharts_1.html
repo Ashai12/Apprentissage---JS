@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Chargement de l'API Google Chart -->
+    <script src="https://www.google.com/jsapi"></script>
+
+    <!-- Chargement du module visualization en version 1 avec en 
+    option le package corechart -->
+    <script>
+        google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+
+    <!-- Définition de l'historigramme -->
+     <script>
+        function tracerGraphe()
+        {
+            // Données à représenter graphiquement
+            var donnees = google.visualization.arrayToDataTable([
+                ['Année', 'Allemagne', 'France', 'Italie', 'Moyenne'],
+                ['2010', 100, 110, 150, 120],
+                ['2011', 120, 130, 200, 150],
+                ['2012', 140, 120, 220, 160],
+            ]);
+            /** Options : 
+            https://developers.google.com/chart/interactive/docs/gallery/combochart
+            **/
+
+            var options = {
+                title : 'Production annuelle par pays',
+                vAxis : {title: 'Tonnes'},
+                hAxis : {title: 'Années'},
+                seriesType : "bars",
+                series : {3: {type: "line"}}
+            };
+
+            // Instanciation du graphique
+            var chart = new google.visualization.ComboChart(document.
+            getElementById('chart_div'));
+
+            // dessin du graphique
+            chart.draw(donnees, options);
+        }
+
+        google.setOnLoadCallback(tracerGraphe);
+     </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+    <br><br><br>
+    <center>
+        <a href="JavaScript:window.location='view-source:' + window.location">
+            Code source
+        </a>
+    </center>
+</body>
+</html>
