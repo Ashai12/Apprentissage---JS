@@ -20,10 +20,12 @@
 .gratuit {
     font-size: 18px;
     text-transform: uppercase;
+    margin-top: 6px;
 }
 
 h1 {
     font-size: 64px;
+    margin-top: 8px;
 }
 
 .desc {
@@ -45,6 +47,10 @@ button a {
 
 .conteneur2 {
     height: 350px;
+}
+
+.padding {
+    padding: 100px;
 }
 
 .conteneur2 h2 {
