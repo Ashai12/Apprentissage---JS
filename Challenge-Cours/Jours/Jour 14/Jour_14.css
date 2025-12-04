@@ -1,0 +1,78 @@
+.conteneur1 {
+    background-color: #020f23;
+    height: 600px;
+}
+
+.baseFlex{
+    display: flex;
+    flex-direction: column;
+}
+
+.baseCenter {
+    justify-content: center;
+    align-items: center;
+}
+.base{
+    color: white;
+    font-weight: 400;
+}
+
+.gratuit {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+.desc {
+    font-size: 24px;
+}
+
+button {
+    width: 250px;
+    height: 75px;
+    border-radius: 25px;
+    background-color: #FCA311;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+    font-size: 36px;
+}
+
+.conteneur2 {
+    height: 350px;
+}
+
+.conteneur2 h2 {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.produits {
+    display: flex;
+    flex-direction: row;
+}
+
+.produits section {
+    margin: 0 100px 0 100px;
+    width: 50%;
+
+}
+
+.bgcGrey {
+    background-color: gainsboro;
+    height: 500px;
+}
+
+.produits div img{
+    width: 493px;
+    height: 348px;
+}
+
+.produits section h3 {
+    font-size: 36px;
+}

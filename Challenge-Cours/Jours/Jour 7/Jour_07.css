@@ -1,0 +1,18 @@
+.conteneur {
+    background-color: #5C92E2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 512px;
+}
+
+.base{
+    color: white;
+    font-size: 96px;
+    font-weight: 400;
+}
+
+h2 {
+    margin-top: 200px;
+    transform: rotate(-20deg);
+}
