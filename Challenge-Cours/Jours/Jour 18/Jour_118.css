@@ -5,7 +5,6 @@ body {
 .conteneur {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
 }
 
 .conteneur section {
@@ -29,7 +28,7 @@ form {
 }
 
 input[type="Email"], input[type="Password"]  {
-    width: 708px;
+    width: 608px;
     height: 85px;
     position: relative;
     padding: 22px 45px 22px 42px;
