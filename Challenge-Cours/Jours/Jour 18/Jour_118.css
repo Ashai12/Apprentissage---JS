@@ -1,0 +1,103 @@
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.conteneur {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.conteneur section {
+    padding: 20px;
+}
+
+.fs-48 {
+    font-size: 48px;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fs-28 {
+    font-size: 28px;
+}
+
+form {
+    margin-top: 50px;
+}
+
+input[type="Email"], input[type="Password"]  {
+    width: 708px;
+    height: 85px;
+    position: relative;
+    padding: 22px 45px 22px 42px;
+}
+
+::placeholder {
+    position: absolute;
+    left: 42px;
+}
+
+.flex {
+    display: flex;
+}
+
+form div {
+    flex-direction: row;
+    gap: 20px;
+}
+
+input[type="Checkbox"] {
+    width: 48px;
+    height: 48px;
+    margin-top: 30px;
+}
+
+form div p {
+    width: 511px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+button {
+    width: 418px;
+    height: 85px;
+    background: linear-gradient(to right,#53E0FF, #1E94E9);
+    padding: 20px 66px 20px 66px;
+    gap: 10px;
+    box-shadow: 5px 5px 20px 0px #00E0FF26;
+    border: none;
+    font-size: 30px;
+    color: white;
+}
+
+.br-25 {
+    border-radius: 25px;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.fs-24  {
+    font-size: 24px;
+}
+
+.sign-in {
+    color: #1E94E9;
+}
+
+.conteneur div:last-child {
+    background: linear-gradient(to right, #53E0FF, #6aafe1);
+    justify-content: center;
+    align-items: center;
+}
+
+.conteneur div:last-child img {
+    width: 100%;
+    height: 100%;
+}
