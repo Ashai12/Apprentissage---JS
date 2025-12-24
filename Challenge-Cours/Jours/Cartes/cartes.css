@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteneur {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.carte {
+    overflow: hidden;
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.verte {
+    background-color: green;
+}
+
+.jaune {
+    background-color: yellow;
+}
+
+.bleue {
+    background-color: blue;
+}
+
+.rouge {
+    background-color: red;
+}
+
+.grise {
+    background-color: grey;
+}
+
+.marron {
+    background-color: brown;
+}
+
+.carte:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.conteneur:hover .carte:not(:hover) {
+    transform: scale(0.9, 0.9);
+    filter: blur(5px);
+}
